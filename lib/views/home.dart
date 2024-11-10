@@ -1,69 +1,100 @@
 import 'package:flutter/material.dart';
+import 'package:alquiler_autos/views/detalles.dart';
+import 'package:alquiler_autos/views/perfil.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int _selectedIndex = 1;
+  
+  static const List<Map<String, String>> cars = [
+    {'name': 'Toyota Corolla', 'year': '2022', 'price': '99.99'},
+    {'name': 'Nissan Sentra', 'year': '2021', 'price': '89.99'},
+    {'name': 'Ford Mustang', 'year': '2023', 'price': '199.99'},
+    {'name': 'Chevrolet Camaro', 'year': '2020', 'price': '150.00'},
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() => _selectedIndex = index);
+
+    switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const Home()),
+        );
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Perfil()),
+        );
+    }
+  }
+
+  void _navigateToDetails() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const Detalles()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const BackButton(color: Colors.black),
-        title: const Text(
-          'Alquiler de Vehículos',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Color.fromARGB(255, 38, 108, 199),
-      ),
+      appBar: _buildAppBar(),
       body: Column(
         children: [
-          // Barra de búsqueda
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Buscar vehículo',
-                prefixIcon: const Icon(Icons.search),
-                filled: true,
-                fillColor: Colors.grey[100],
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide.none,
-                ),
-              ),
-            ),
-          ),
-          // Lista de vehículos
-          Expanded(
-            child: ListView(
-              children: [
-                _buildCarItem('Toyota Corolla', '2022', '99.99'),
-                _buildCarItem('Nissan Sentra', '2021', '89.99'),
-                _buildCarItem('Ford Mustang', '2023', '199.99'),
-                _buildCarItem('Chevrolet Camaro', '2020', '150.00'),
-              ],
-            ),
-          ),
-          // Barra de navegación inferior
-          BottomNavigationBar(
-            selectedItemColor: Color.fromARGB(255, 115, 206, 229),
-            unselectedItemColor: Colors.grey,
-            currentIndex: 1,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
-                label: 'Inicio',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.directions_car_outlined),
-                label: 'Alquiler',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline),
-                label: 'Usuario',
-              ),
-            ],
-          ),
+          _buildSearchBar(),
+          _buildCarList(),
         ],
+      ),
+      bottomNavigationBar: _buildBottomNavigationBar(),
+    );
+  }
+
+  PreferredSizeWidget _buildAppBar() {
+    return AppBar(
+      leading: const BackButton(color: Colors.black),
+      title: const Text(
+        'Alquiler de Vehículos',
+        style: TextStyle(color: Colors.black),
+      ),
+      backgroundColor: const Color.fromARGB(255, 38, 108, 199),
+    );
+  }
+
+  Widget _buildSearchBar() {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: 'Buscar vehículo',
+          prefixIcon: const Icon(Icons.search),
+          filled: true,
+          fillColor: Colors.grey[100],
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide.none,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCarList() {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: cars.length,
+        itemBuilder: (context, index) => _buildCarItem(
+          cars[index]['name']!,
+          cars[index]['year']!,
+          cars[index]['price']!,
+        ),
       ),
     );
   }
@@ -91,31 +122,49 @@ class Home extends StatelessWidget {
             color: const Color.fromARGB(255, 228, 252, 245),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Icon(
+          child: const Icon(
             Icons.directions_car,
             color: Color.fromARGB(255, 30, 112, 236),
           ),
         ),
         title: Text(
           name,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Text(
           'Año: $year - \$$price/día',
-          style: TextStyle(
-            color: Colors.grey[600],
-          ),
+          style: TextStyle(color: Colors.grey[600]),
         ),
-        trailing: const Icon(
-          Icons.chevron_right,
-          color: Colors.grey,
-        ),
-        onTap: () {
-          // Manejar la selección del vehículo
-        },
+        trailing: const Icon(Icons.chevron_right, color: Colors.grey),
+        onTap: _navigateToDetails,
       ),
+    );
+  }
+
+  Widget _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      currentIndex: _selectedIndex,
+      selectedItemColor: const Color.fromARGB(255, 115, 206, 229),
+      unselectedItemColor: Colors.grey,
+      onTap: _onItemTapped,
+      items: const [
+        BottomNavigationBarItem( // Corregido aquí
+          icon: Icon(Icons.home_outlined),
+          activeIcon: Icon(Icons.home),
+          label: 'Inicio',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.directions_car_outlined),
+          activeIcon: Icon(Icons.directions_car),
+          label: 'Alquiler',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person_outline),
+          activeIcon: Icon(Icons.person),
+          label: 'Perfil',
+        ),
+      ],
     );
   }
 }

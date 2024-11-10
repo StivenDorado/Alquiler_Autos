@@ -142,3 +142,42 @@
 2024-11-09 21:14:02.676 -05:00 [DBG] Starting: Processing notification exit
 2024-11-09 21:14:02.677 -05:00 [DBG] Starting: Routing Notification exit
 2024-11-09 21:14:02.677 -05:00 [VRB] Converting params for Notification exit to OmniSharp.Extensions.LanguageServer.Protocol.Models.ExitParams
+2024-11-09 21:14:15.661 -05:00 [INF] This only goes file...
+2024-11-09 21:14:16.496 -05:00 [INF] Foo
+2024-11-09 21:14:16.557 -05:00 [DBG] Finding descriptors for initialize
+2024-11-09 21:14:16.777 -05:00 [DBG] Queueing "Serial":initialize:0 request for processing
+2024-11-09 21:14:16.806 -05:00 [DBG] Starting: Processing request initialize 0
+2024-11-09 21:14:16.808 -05:00 [DBG] Starting: Routing Request (0) initialize
+2024-11-09 21:14:16.813 -05:00 [VRB] Converting params for Request (0) initialize to OmniSharp.Extensions.LanguageServer.Protocol.Models.InternalInitializeParams
+2024-11-09 21:14:16.814 -05:00 [VRB] Converting params for Notification initialize to OmniSharp.Extensions.LanguageServer.Protocol.Models.InternalInitializeParams
+2024-11-09 21:14:17.486 -05:00 [VRB] Response value was OmniSharp.Extensions.LanguageServer.Protocol.Models.InitializeResult
+2024-11-09 21:14:17.497 -05:00 [DBG] Finished: Routing Request (0) initialize in 688ms
+2024-11-09 21:14:17.498 -05:00 [DBG] Finished: Processing request initialize 0 in 690ms
+2024-11-09 21:14:24.015 -05:00 [DBG] Finding descriptors for initialized
+2024-11-09 21:14:24.020 -05:00 [DBG] Queueing "Serial":initialized request for processing
+2024-11-09 21:14:24.027 -05:00 [DBG] Starting: Processing notification initialized
+2024-11-09 21:14:24.028 -05:00 [DBG] Starting: Routing Notification initialized
+2024-11-09 21:14:24.029 -05:00 [VRB] Converting params for Notification initialized to OmniSharp.Extensions.LanguageServer.Protocol.Models.InitializedParams
+2024-11-09 21:14:24.076 -05:00 [WRN] No ConfigurationItems have been defined, configuration won't surface any configuration from the client!
+2024-11-09 21:14:24.123 -05:00 [DBG] Finished: Routing Notification initialized in 93ms
+2024-11-09 21:14:24.124 -05:00 [DBG] Finished: Processing notification initialized in 95ms
+2024-11-09 22:27:32.494 -05:00 [DBG] Finding descriptors for shutdown
+2024-11-10 10:13:31.148 -05:00 [INF] This only goes file...
+2024-11-10 10:13:31.724 -05:00 [INF] Foo
+2024-11-10 10:13:31.789 -05:00 [DBG] Finding descriptors for initialize
+2024-11-10 10:13:31.974 -05:00 [DBG] Queueing "Serial":initialize:0 request for processing
+2024-11-10 10:13:31.995 -05:00 [DBG] Starting: Processing request initialize 0
+2024-11-10 10:13:31.996 -05:00 [DBG] Starting: Routing Request (0) initialize
+2024-11-10 10:13:32.001 -05:00 [VRB] Converting params for Request (0) initialize to OmniSharp.Extensions.LanguageServer.Protocol.Models.InternalInitializeParams
+2024-11-10 10:13:32.002 -05:00 [VRB] Converting params for Notification initialize to OmniSharp.Extensions.LanguageServer.Protocol.Models.InternalInitializeParams
+2024-11-10 10:13:32.528 -05:00 [VRB] Response value was OmniSharp.Extensions.LanguageServer.Protocol.Models.InitializeResult
+2024-11-10 10:13:32.541 -05:00 [DBG] Finished: Routing Request (0) initialize in 544ms
+2024-11-10 10:13:32.542 -05:00 [DBG] Finished: Processing request initialize 0 in 546ms
+2024-11-10 10:13:34.021 -05:00 [DBG] Finding descriptors for initialized
+2024-11-10 10:13:34.025 -05:00 [DBG] Queueing "Serial":initialized request for processing
+2024-11-10 10:13:34.035 -05:00 [DBG] Starting: Processing notification initialized
+2024-11-10 10:13:34.037 -05:00 [DBG] Starting: Routing Notification initialized
+2024-11-10 10:13:34.037 -05:00 [VRB] Converting params for Notification initialized to OmniSharp.Extensions.LanguageServer.Protocol.Models.InitializedParams
+2024-11-10 10:13:34.105 -05:00 [WRN] No ConfigurationItems have been defined, configuration won't surface any configuration from the client!
+2024-11-10 10:13:34.170 -05:00 [DBG] Finished: Routing Notification initialized in 133ms
+2024-11-10 10:13:34.171 -05:00 [DBG] Finished: Processing notification initialized in 134ms

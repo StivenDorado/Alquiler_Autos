@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:alquiler_autos/views/pago.dart';
 
 class Detalles extends StatelessWidget {
   const Detalles({Key? key}) : super(key: key);
@@ -7,7 +8,7 @@ class Detalles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 30, 112, 236),
+        backgroundColor: const Color.fromARGB(255, 30, 112, 236),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
@@ -30,7 +31,7 @@ class Detalles extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-          
+
           // Detalles del vehículo
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -45,7 +46,6 @@ class Detalles extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                
                 const Text(
                   'Modelo: Corolla',
                   style: TextStyle(
@@ -54,7 +54,6 @@ class Detalles extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                
                 const Text(
                   'Año: 2022',
                   style: TextStyle(
@@ -63,7 +62,6 @@ class Detalles extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                
                 Row(
                   children: [
                     const Text(
@@ -86,18 +84,24 @@ class Detalles extends StatelessWidget {
               ],
             ),
           ),
-          
+
           const Spacer(),
-          
+
           // Botón de alquiler
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
               onPressed: () {
-                // Implementar lógica de alquiler
+                // Navegar a la pantalla de pago
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Pago(),
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 38, 108, 199),
+                backgroundColor: const Color.fromARGB(255, 38, 108, 199),
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),

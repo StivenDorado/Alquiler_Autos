@@ -1,3 +1,4 @@
+import 'package:alquiler_autos/views/home.dart';
 import 'package:alquiler_autos/views/registrarse.dart';
 import 'package:flutter/material.dart';
 
@@ -20,10 +21,16 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
+  // Simulamos un inicio de sesión mostrando un mensaje en pantalla
   void _iniciarSesion() {
     if (_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Iniciando sesión...')),
+        const SnackBar(content: Text('Inicio de sesión exitoso')),
+      );
+      // Navegamos a la pantalla Home después de un inicio de sesión exitoso
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const Home()),
       );
     }
   }
@@ -32,17 +39,18 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
           child: Form(
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(height: 60), // Añadido para mejor espaciado
                 const Icon(
                   Icons.person,
                   size: 60,
-                  color: Color.fromARGB(255, 115, 206, 229), 
+                  color: Color.fromARGB(255, 115, 206, 229),
                 ),
                 const SizedBox(height: 16),
                 const Text(
@@ -64,6 +72,7 @@ class _LoginState extends State<Login> {
                 const SizedBox(height: 32),
                 TextFormField(
                   controller: _correo,
+                  keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     hintText: 'Correo electrónico',
                     prefixIcon: const Icon(Icons.email_outlined),
@@ -133,7 +142,7 @@ class _LoginState extends State<Login> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Navegar a la pantalla de recuperación de contraseña
+                        // Aquí podrías navegar a una pantalla de recuperación
                       },
                       child: const Text(
                         'Recuperar',
@@ -155,7 +164,12 @@ class _LoginState extends State<Login> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        // Navegar a la pantalla de registro
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Registrarse(),
+                          ),
+                        );
                       },
                       child: const Text(
                         'Regístrate',

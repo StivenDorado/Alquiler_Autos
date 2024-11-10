@@ -1,3 +1,4 @@
+import 'package:alquiler_autos/views/login.dart';
 import 'package:flutter/material.dart';
 
 class Registrarse extends StatefulWidget {
@@ -181,6 +182,12 @@ class _RegistrarseState extends State<Registrarse> {
                     GestureDetector(
                       onTap: () {
                         // Agregar navegación a la pantalla de inicio de sesión
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Login(),
+                          ),
+                        );
                       },
                       child: const Text(
                         'Iniciar sesión',
